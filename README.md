@@ -11,7 +11,8 @@ This project is a CRUD (Create, Read, Update, Delete) website that incorporates 
 - [Setup and Installation](#setup-and-installation)
 - [User Registration](#user-registration)
 - [User Login](#user-login)
-- [View & Update User Information](#view-and-update-user-information)
+- [View & Update User Information](#view-&-update-user-information)
+- [Forgot Password & Reset Password](#forgot-password-&-reset-password)
 - [Delete Account](#delete-account)
 - [Video Demonstration](#video-demonstration)
 
@@ -65,7 +66,7 @@ To run this project, ensure you have the following:
 3. Click the "Login" button.
 4. Upon successful login, you will be redirected to the user profile.
 
-## View User Information & Update User Information
+## View & Update User Information
 
 1. After login, you'll land on the user dashboard.
 2. View your profile information, including username, email, and other details.
