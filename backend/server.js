@@ -6,7 +6,6 @@ const fileUpload = require('express-fileupload');
 const crypto = require ('crypto');
 const cors = require('cors');
 const path = require('path');
-const passwordChangeMiddleware = require('./middleware/passwordChangeMiddleware');
 const app = express();
 const fs = require('fs');
 const PORT = process.env.PORT || 5000;
@@ -63,7 +62,7 @@ app.post('/upload-picture', authenticateUser, fileUpload(), async (req, res) => 
 
         const picture = req.files.profileInfo;
 
-        // Validate file extension (you can enhance this validation)
+        // Validate file extension 
         const allowedExtensions = ['jpg', 'jpeg', 'png'];
         const fileExtension = picture.name.split('.').pop().toLowerCase();
 
@@ -80,13 +79,13 @@ app.post('/upload-picture', authenticateUser, fileUpload(), async (req, res) => 
                 return res.status(500).json({ error: 'Error uploading file' });
             }
 
-            // Update user's picture field
+            
             const user = await User.findById(userId);
             if (!user) {
                 return res.status(404).json({ error: 'User not found' });
             }
 
-            user.profileInfo = pictureName; // Updated field to profileInfo
+            user.profileInfo = pictureName; 
             await user.save();
 
             res.json({ message: 'Picture uploaded successfully' });
@@ -116,17 +115,17 @@ app.post('/register', async (req, res) => {
             return res.status(400).json({ error: 'Password must be at least 6 characters long' });
         }
 
-        // Hash password
+
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // Check if picture file is included in the request
+  
         if (!req.files || Object.keys(req.files).length === 0 || !req.files.profileInfo) {
             return res.status(400).json({ error: 'Profile picture is required' });
         }
 
         const picture = req.files.profileInfo;
 
-        // Validate file extension (you can enhance this validation)
+        // Validate file extension 
         const allowedExtensions = ['jpg', 'jpeg', 'png'];
         const fileExtension = picture.name.split('.').pop().toLowerCase();
 
@@ -148,7 +147,7 @@ app.post('/register', async (req, res) => {
                 email,
                 password: hashedPassword,
                 gender,
-                profileInfo: pictureName, // Updated field to profileInfo
+                profileInfo: pictureName, 
             });
 
             // Save user to the database
@@ -229,7 +228,7 @@ app.patch('/update-profile', authenticateUser, async (req, res) => {
         if (req.files && req.files.profileInfo) {
             const picture = req.files.profileInfo;
 
-            // Validate file extension (you can enhance this validation)
+            // Validate file extension 
             const allowedExtensions = ['jpg', 'jpeg', 'png'];
             const fileExtension = picture.name.split('.').pop().toLowerCase();
 
@@ -252,7 +251,7 @@ app.patch('/update-profile', authenticateUser, async (req, res) => {
                 res.json({ message: 'Profile updated successfully', user });
             });
         } else {
-            // Save the updated user (without updating the profile picture)
+            // Save the updated user 
             await user.save();
             res.json({ message: 'Profile updated successfully', user });
         }
@@ -286,7 +285,7 @@ app.post('/forgot-password', async (req, res) => {
 
         // Save the token and expiration time in the user document
         user.resetToken = resetToken;
-        user.resetTokenExpiresAt = Date.now() + 3600000; // 1 hour in milliseconds
+        user.resetTokenExpiresAt = Date.now() + 3600000; 
         await user.save();
 
         // TODO: Send the reset token to the user's email (you can use a mailing library for this)
@@ -311,7 +310,6 @@ app.post('/reset-password', async (req, res) => {
             return res.status(404).json({ error: 'User not found' });
         }
 
-        // Validate the length of the new password
         if (newPassword.length < 6) {
             return res.status(400).json({ error: 'Password must be at least 6 characters long' });
         }
@@ -351,12 +349,7 @@ app.post('/logout', (req, res) => {
     res.json({ message: 'Logout successful' });
 });
 
-// Route for updating password after login
-app.post('/change-password', authenticateUser, (req, res, next) => {
-    // Pass the User model to the middleware
-    req.UserModel = User;
-    passwordChangeMiddleware(req, res, next);
-});
+
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
