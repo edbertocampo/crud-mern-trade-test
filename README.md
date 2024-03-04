@@ -1,6 +1,6 @@
 # CRUD Website with User Authentication
 
-This project is a CRUD (Create, Read, Update, Delete) website that incorporates user login functionality using React. Users can register, log in, and view user information securely.
+A CRUD (Create, Read, Update, Delete) website that incorporates user login functionality using React. Users can register, log in, and view user information securely.
 
 ## Table of Contents
 
@@ -59,12 +59,16 @@ To run this project, ensure you have the following:
 3. Click the "Register" button.
 4. Upon successful login, you will be redirected to the login page.
 
+![](https://github.com/edbertocampo/crud-mern-trade-test/blob/master/register.gif)
+
 ## User Login
 
 1. Go to the login page.
 2. Enter your registered email and password.
 3. Click the "Login" button.
 4. Upon successful login, you will be redirected to the user profile.
+
+![](https://github.com/edbertocampo/crud-mern-trade-test/blob/master/login.gif)
 
 ## View & Update User Information
 
@@ -75,12 +79,16 @@ To run this project, ensure you have the following:
 5. Click the "Save Changes" button.
 6. You will receive a success message upon successful update.
 
+![](https://github.com/edbertocampo/crud-mern-trade-test/blob/master/view%26update.gif)
+
 ## Forgot Password & Reset Password
 
 1. On the login page you will a link for forgot password.
 2. Put your email address and wait until the link for reset password shows up.
 3. Input your new password and click the "Reset Password" button
 4. Upon successfully resetting the password, you will be redirected to the login page.
+
+![](https://github.com/edbertocampo/crud-mern-trade-test/blob/master/reset.gif)
 
 ## Delete Account
 
