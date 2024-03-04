@@ -96,6 +96,8 @@ To run this project, ensure you have the following:
 2. Click the "Delete Account" button if you want to delete your user account (Note: This is irreversible)
 
 ## Video Demonstration
+[![Watch the Video]](https://drive.google.com/file/d/1rBkbUcGf4KOm-VuxmV75155uRyD51Z_k/view?usp=sharing)
+
 
 
 
